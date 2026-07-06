@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row mt-5">
+
+<div class="col-md-5">
+
+{% if product.image %}
+<img src="{{ product.image.url }}" class="img-fluid rounded shadow">
+{% endif %}
+
+</div>
+
+<div class="col-md-7">
+
+<h2>{{ product.name }}</h2>
+
+<hr>
+
+<h3 class="text-success">₹{{ product.price }}</h3>
+
+<p><strong>Brand:</strong> {{ product.brand }}</p>
+
+<p><strong>Category:</strong> {{ product.category }}</p>
+
+<p><strong>Stock:</strong> {{ product.quantity }}</p>
+
+<p>{{ product.description }}</p>
+
+<a href="/" class="btn btn-primary">
+← Back to Home
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

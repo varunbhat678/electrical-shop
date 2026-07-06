@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home | Shree Krishna Electricals
+{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+
+    <h1>⚡ Shree Krishna Electricals</h1>
+
+    <h4>Your Trusted Electrical Products Store</h4>
+
+    <p>Quality Products • Trusted Brands • Best Prices</p>
+
+</div>
+
+<h3 class="mb-3">Categories</h3>
+
+<div class="mb-4">
+{% for category, products in categories.items %}
+<a href="/category/{{ category }}/" class="btn btn-outline-primary m-1">
+    {{ category }}
+</a>
+{% endfor %}
+</div>
+
+{% for category, products in categories.items %}
+
+<h2 class="text-primary mt-4">{{ category }}</h2>
+
+<div class="row">
+
+{% for product in products %}
+
+<div class="col-md-4 mb-4">
+
+<div class="card shadow h-100">
+
+{% if product.image %}
+<img src="{{ product.image.url }}" class="card-img-top">
+{% endif %}
+
+<div class="card-body">
+
+<h5>{{ product.name }}</h5>
+
+<p><strong>Brand:</strong> {{ product.brand }}</p>
+
+<p><strong>Price:</strong>
+<span class="text-success fw-bold">₹{{ product.price }}</span>
+</p>
+
+<p>
+<strong>Stock:</strong>
+
+{% if product.quantity > 0 %}
+<span class="badge bg-success">Available</span>
+{% else %}
+<span class="badge bg-danger">Out of Stock</span>
+{% endif %}
+
+</p>
+
+<a href="/product/{{ product.id }}/"
+class="btn btn-primary w-100">
+View Details
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
